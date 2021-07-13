@@ -46,7 +46,7 @@ namespace order_management.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(long id)
         {
             await _orderManagementService.Remove(id);
         }
