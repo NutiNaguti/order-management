@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>order_management.repository</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="MongoDB.Driver" />
+    <None Remove="Microsoft.Extensions.Options" />
+    <None Remove="Models\" />
+    <None Remove="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.12.4" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\order-management.common\order-management.common.csproj" />
+  </ItemGroup>
+</Project>

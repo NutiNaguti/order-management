@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>order_management.services</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\order-management.common\order-management.common.csproj" />
+    <ProjectReference Include="..\order-management.repository\order-management.repository.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Converters\" />
+    <None Remove="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+</Project>
