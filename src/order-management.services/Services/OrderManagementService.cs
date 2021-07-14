@@ -18,25 +18,25 @@ namespace order_management.services
             _orderContext = orderContext;
         }
 
-        public async Task AddNewOrder(Order order)
+        public void Create(Order order)
         {
-            await _orderContext.AddNewOrder(order.MapToModel());
+            _orderContext.Create(order.MapToModel());
         }
 
-        public async Task Remove(long id)
+        public void Remove(string id)
         {
-            await _orderContext.Remove(id);
+            _orderContext.Remove(id);
         }
 
-        public Task<IEnumerable<Order>> GetAllOrders()
+        public IEnumerable<Order> Get()
         {
-            var result = _orderContext.GetAllOrders().ToList();
-            return (Task<IEnumerable<Order>>)result.MapToModel();
+            var result = _orderContext.Get();
+            return result.MapToModel();
         }
 
-        public async Task<IEnumerable<Order>> GetOrdersByFio(string fio)
+        public IEnumerable<Order> Get(string fio)
         {
-            var result = await _orderContext.GetOrdersByFio(fio);
+            var result = _orderContext.Get(fio);
             return result.MapToModel();
         }
     }

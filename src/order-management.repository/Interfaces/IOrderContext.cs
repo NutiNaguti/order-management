@@ -11,27 +11,27 @@ namespace order_management.repository.Interfaces
         /// Получить все заказы
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Order> GetAllOrders();
+        IEnumerable<Order> Get();
 
         /// <summary>
         /// Получить заказ по ФИО
         /// </summary>
         /// <param name="fio"></param>
         /// <returns></returns>
-        Task<IEnumerable<Order>> GetOrdersByFio(string fio);
+        IEnumerable<Order> Get(string fio);
 
         /// <summary>
         /// Добавить новый заказ
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>
-        Task AddNewOrder(Order order);
+        void Create(Order order);
 
         /// <summary>
         /// Удалить заказ
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task Remove(long id);
+        void Remove(string id);
     }
 }

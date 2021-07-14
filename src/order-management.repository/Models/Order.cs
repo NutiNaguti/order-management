@@ -13,10 +13,11 @@ namespace order_management.repository.Models
         /// ID заказа
         /// </summary>
         [BsonRepresentation(BsonType.ObjectId)]
-        public long Id { get; set; }
+        public string Id { get; set; }
         /// <summary>
         /// Дата создания
         /// </summary>
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime DateTime {get;set;}
         /// <summary>
         /// ФИО

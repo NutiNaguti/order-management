@@ -9,7 +9,7 @@ namespace order_management.common.Models
         /// ID заказа
         /// </summary>
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public string Id { get; set; }
         /// <summary>
         /// Дата создания
         /// </summary>
