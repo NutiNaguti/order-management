@@ -13,6 +13,7 @@ namespace order_management
 {
     public class Startup
     {
+        private const string DevelopingCorsRules = "localhost";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,6 +24,20 @@ namespace order_management
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // CORS policy
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    DevelopingCorsRules,
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
+            
             // конфигурация бд
             services.Configure<common.Common.OrderManagementDatabaseSettings>(
                 Configuration.GetSection(nameof(common.Common.OrderManagementDatabaseSettings)));
@@ -48,9 +63,8 @@ namespace order_management
             //app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors(DevelopingCorsRules);
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

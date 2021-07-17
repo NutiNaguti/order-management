@@ -24,7 +24,7 @@ namespace order_management.Controllers
         public ActionResult<IEnumerable<Order>> Get(string fio)
         {
             var result = _orderManagementService.Get(fio).ToList();
-            if (result == null || result.Count == 0)
+            if (result.Count == 0)
             {
                 return NotFound();
             }

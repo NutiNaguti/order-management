@@ -20,6 +20,7 @@ namespace order_management.services
 
         public void Create(Order order)
         {
+            order.DateTime = DateTime.Now;
             _orderContext.Create(order.MapToModel());
         }
 
