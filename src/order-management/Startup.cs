@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 using order_management.common.Interfaces;
 using order_management.repository;
 using order_management.repository.Interfaces;
-using order_management.services;
+using order_management.services.Services;
 
 namespace order_management
 {
