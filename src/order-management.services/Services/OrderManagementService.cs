@@ -7,7 +7,7 @@ using order_management.common.Models;
 using order_management.repository.Interfaces;
 using order_management.services.converters;
 
-namespace order_management.services
+namespace order_management.services.Services
 {
     public class OrderManagementService : IOrderManagementService
     {
