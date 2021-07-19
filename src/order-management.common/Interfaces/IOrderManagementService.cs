@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using order_management.common.Models;
 
 namespace order_management.common.Interfaces
@@ -8,12 +9,12 @@ namespace order_management.common.Interfaces
     /// </summary>
     public interface IOrderManagementService
     {
-        IEnumerable<Order> Get();
+        Task<IEnumerable<Order>> Get();
 
-        IEnumerable<Order> Get(string fio);
+        Task<IEnumerable<Order>> Get(string fio);
 
-        void Create(Order order);
+        Task<Order> Create(Order order);
 
-        void Remove(string id);
+        Task<string> Remove(string id);
     }
 }

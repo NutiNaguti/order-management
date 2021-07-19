@@ -7,6 +7,25 @@ namespace order_management.services.converters
 { 
     public static class OrderManagementServiceConverter
     {
+        public static Order MapToModel(this repository.Models.Order order)
+        {
+            if (order == null)
+            {
+                return null;
+            }
+
+            var result = new Order
+            {
+                Id = order.Id,
+                DateTime = order.DateTime,
+                FIO = order.FIO,
+                Description = order.Description,
+                Cost = order.Cost
+            };
+            
+            return result;
+        }
+        
         public static repository.Models.Order MapToModel(this Order order)
         {
             if (order == null)

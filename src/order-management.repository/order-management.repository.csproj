@@ -12,6 +12,7 @@
     <None Remove="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.12.4" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
   </ItemGroup>
@@ -21,5 +22,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\order-management.common\order-management.common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions" />
   </ItemGroup>
 </Project>

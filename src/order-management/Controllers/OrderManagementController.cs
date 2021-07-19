@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using order_management.common.Interfaces;
 using order_management.common.Models;
@@ -17,33 +18,35 @@ namespace order_management.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Order>> Get() =>
-             _orderManagementService.Get().ToList();
+        public async Task<ActionResult<IEnumerable<Order>>> Get()
+        {
+            var orderList = await _orderManagementService.Get();
+            return Ok(orderList);
+        }
 
         [HttpGet("{fio}")]
-        public ActionResult<IEnumerable<Order>> Get(string fio)
+        public async Task<ActionResult<IEnumerable<Order>>> Get(string fio)
         {
-            var result = _orderManagementService.Get(fio).ToList();
-            if (result.Count == 0)
+            var result = await _orderManagementService.Get(fio);
+            if (result.ToList().Count == 0)
             {
                 return NotFound();
             }
-
-            return result;
+            return Ok(result);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Order order)
+        public async Task<ActionResult<Order>> Create([FromBody] Order order)
         {
-            _orderManagementService.Create(order);
-            return NoContent();
+            var result = await _orderManagementService.Create(order);
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteAsync(string id)
+        public async Task<ActionResult<string>> DeleteAsync(string id)
         {
-            _orderManagementService.Remove(id);
-            return NoContent();
+            var result = await _orderManagementService.Remove(id);
+            return Ok(result);
         }
     }
 }
