@@ -62,7 +62,7 @@ namespace order_management.services.converters
                 DateTime = x.DateTime
             });
 
-            return result;
+            return result.ToList();
         }
     }
 }

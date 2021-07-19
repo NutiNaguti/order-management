@@ -20,4 +20,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\order-management.common\order-management.common.csproj" />
+    <ProjectReference Include="..\order-management.repository\order-management.repository.csproj" />
+    <ProjectReference Include="..\order-management.services\order-management.services.csproj" />
+  </ItemGroup>
+
 </Project>
