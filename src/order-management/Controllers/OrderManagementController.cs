@@ -43,7 +43,7 @@ namespace order_management.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<string>> DeleteAsync(string id)
+        public async Task<ActionResult<IEnumerable<string>>> DeleteAsync(IEnumerable<string> id)
         {
             var result = await _orderManagementService.Remove(id);
             return Ok(result);

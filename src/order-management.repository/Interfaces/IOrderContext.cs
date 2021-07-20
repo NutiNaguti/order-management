@@ -32,6 +32,6 @@ namespace order_management.repository.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<string> Remove(string id);
+        Task<IEnumerable<string>> Remove(IEnumerable<string> id);
     }
 }

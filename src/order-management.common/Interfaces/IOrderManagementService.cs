@@ -15,6 +15,6 @@ namespace order_management.common.Interfaces
 
         Task<Order> Create(Order order);
 
-        Task<string> Remove(string id);
+        Task<IEnumerable<string>> Remove(IEnumerable<string> id);
     }
 }

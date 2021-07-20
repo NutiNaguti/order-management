@@ -13,7 +13,7 @@ namespace order_management
 {
     public class Startup
     {
-        private const string DevelopingCorsRules = "localhost";
+        private const string DevelopmentCORSRules = "localhost";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,7 +28,7 @@ namespace order_management
             services.AddCors(options =>
             {
                 options.AddPolicy(
-                    DevelopingCorsRules,
+                    DevelopmentCORSRules,
                     builder =>
                     {
                         builder
@@ -63,7 +63,7 @@ namespace order_management
             //app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors(DevelopingCorsRules);
+            app.UseCors(DevelopmentCORSRules);
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

@@ -41,7 +41,7 @@ namespace order_management.services.Services
             }
         }
 
-        public async Task<string> Remove(string id)
+        public async Task<IEnumerable<string>> Remove(IEnumerable<string> id)
         {
             try
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
@@ -79,13 +80,17 @@ namespace order_management.repository
         }
 
         /// <inheritdoc/>
-        public async Task<string> Remove(string id)
+        public async Task<IEnumerable<string>> Remove(IEnumerable<string> idCollection)
         {
             try
             {
-                await _collection.DeleteOneAsync(x => x.Id == id);
-                _logger.Log(LogLevel.Information, $"order with id={id} was been removed from database");
-                return id;
+                var ids = idCollection.ToList();
+                foreach (var id in ids)
+                {
+                    await _collection.DeleteOneAsync(x => x.Id == id);
+                }
+                _logger.Log(LogLevel.Information, $"order with id={idCollection} was been removed from database");
+                return ids;
             }
             catch (Exception e)
             {
