@@ -25,17 +25,18 @@ namespace order_management.Controllers
         }
 
         [HttpGet("{fio}")]
-        public async Task<ActionResult<IEnumerable<Order>>> Get(string fio)
+        public async Task<ActionResult<IEnumerable<Order>>> Get([FromQuery] string fio)
         {
             var result = await _orderManagementService.Get(fio);
             if (result.ToList().Count == 0)
             {
                 return NotFound();
             }
+
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<ActionResult<Order>> Create([FromBody] Order order)
         {
             var result = await _orderManagementService.Create(order);
@@ -43,7 +44,7 @@ namespace order_management.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<IEnumerable<string>>> DeleteAsync(IEnumerable<string> id)
+        public async Task<ActionResult<IEnumerable<string>>> DeleteAsync([FromBody] string[] id)
         {
             var result = await _orderManagementService.Remove(id);
             return Ok(result);

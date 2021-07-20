@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using order_management.common.Common;
 using order_management.repository.Interfaces;
@@ -48,19 +50,17 @@ namespace order_management.repository
         /// <inheritdoc/>
         public async Task<IEnumerable<Order>> Get(string fio)
         {
-            var orderList = new List<Order>();
             try
             {
-                orderList = await _collection.FindAsync(x => x.FIO == fio).Result.ToListAsync();
+                var orderList = await _collection.FindAsync(x => x.FIO == fio);
                 _logger.Log(LogLevel.Information, "order list was founded");
+                return orderList.ToList();
             }
             catch (Exception e)
             {
                 _logger.Log(LogLevel.Error, e.Message, e.Data);
-                return orderList;
+                return null;
             }
-
-            return orderList;
         }
 
         /// <inheritdoc/>   
@@ -87,9 +87,10 @@ namespace order_management.repository
                 var ids = idCollection.ToList();
                 foreach (var id in ids)
                 {
+                    _logger.Log(LogLevel.Information, id);
                     await _collection.DeleteOneAsync(x => x.Id == id);
+                    _logger.Log(LogLevel.Information, $"order with id={id} was been removed from database");
                 }
-                _logger.Log(LogLevel.Information, $"order with id={idCollection} was been removed from database");
                 return ids;
             }
             catch (Exception e)
