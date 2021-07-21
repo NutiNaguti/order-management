@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using MongoDB.Driver.Core.Operations;
 using order_management.common.Common;
 using order_management.repository.Interfaces;
 using order_management.repository.Models;
@@ -88,8 +89,8 @@ namespace order_management.repository
                 foreach (var id in ids)
                 {
                     _logger.Log(LogLevel.Information, id);
-                    await _collection.DeleteOneAsync(x => x.Id == id);
-                    _logger.Log(LogLevel.Information, $"order with id={id} was been removed from database");
+                    var result = await _collection.DeleteOneAsync(x => x.Id == id);
+                    _logger.Log(LogLevel.Information, $"{result.IsAcknowledged}");
                 }
                 return ids;
             }

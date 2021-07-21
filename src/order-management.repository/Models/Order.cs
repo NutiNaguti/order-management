@@ -12,6 +12,7 @@ namespace order_management.repository.Models
         /// <summary>
         /// ID заказа
         /// </summary>
+        [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         /// <summary>

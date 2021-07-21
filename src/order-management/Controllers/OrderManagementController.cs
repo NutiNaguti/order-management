@@ -28,11 +28,6 @@ namespace order_management.Controllers
         public async Task<ActionResult<IEnumerable<Order>>> Get([FromQuery] string fio)
         {
             var result = await _orderManagementService.Get(fio);
-            if (result.ToList().Count == 0)
-            {
-                return NotFound();
-            }
-
             return Ok(result);
         }
 
