@@ -11,7 +11,7 @@ namespace order_management.services.converters
         {
             if (order == null)
             {
-                return null;
+                return new Order();
             }
 
             var result = new Order
@@ -30,7 +30,7 @@ namespace order_management.services.converters
         {
             if (order == null)
             {
-                return null;
+                return new repository.Models.Order();
             }
 
             var result = new repository.Models.Order()
@@ -50,7 +50,7 @@ namespace order_management.services.converters
             var ordersList = orders?.ToList();
             if (ordersList == null || ordersList.Count == 0)
             {
-                return null;
+                return new List<Order>();
             }
 
             var result = ordersList.Select(x => new Order()

@@ -37,7 +37,7 @@ namespace order_management.services.Services
             catch (Exception e)
             {
                 _logger.Log(LogLevel.Error, e.Message, e.Data);
-                return null;
+                return new Order();
             }
         }
 
@@ -51,7 +51,7 @@ namespace order_management.services.Services
             catch (Exception e)
             {
                 _logger.Log(LogLevel.Error, e.Message, e.Data);
-                return null;
+                return new List<string>();
             }
         }
 
@@ -65,7 +65,7 @@ namespace order_management.services.Services
             catch (Exception e)
             {
                 _logger.Log(LogLevel.Error, e.Message, e.Data);
-                return null;
+                return new List<Order>();
             }
         }
 
@@ -79,7 +79,7 @@ namespace order_management.services.Services
             catch (Exception e)
             {
                 _logger.Log(LogLevel.Error, e.Message, e.Data);
-                return null;
+                return new List<Order>();
             }
         }
     }
