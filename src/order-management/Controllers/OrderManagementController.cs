@@ -7,7 +7,9 @@ using order_management.common.Models;
 
 namespace order_management.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/{version:apiVersion}/[controller]")]
     public class OrderManagementController : Controller
     {
         private readonly IOrderManagementService _orderManagementService;

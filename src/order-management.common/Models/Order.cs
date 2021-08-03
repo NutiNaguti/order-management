@@ -1,9 +1,10 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
 namespace order_management.common.Models
 {
-    public class Order
+    public record Order
     {
         /// <summary>
         /// ID заказа
@@ -18,16 +19,19 @@ namespace order_management.common.Models
         /// <summary>
         /// ФИО
         /// </summary>
+        [Required]
         [JsonProperty("fio")]
         public string FIO { get; set; }
         /// <summary>
         /// Описание заказа
         /// </summary>
+        [Required]
         [JsonProperty("description")]
         public string Description { get; set; }
         /// <summary>
         /// Стоимость
         /// </summary>
+        [Required]
         [JsonProperty("cost")]
         public decimal Cost { get; set; }
     }

@@ -2,6 +2,8 @@
 
 namespace order_management.Controllers
 {
+    [ApiController]
+    [ApiVersionNeutral]
     [Route("api/[controller]")]
     public class HealthCheckController : Controller
     {
